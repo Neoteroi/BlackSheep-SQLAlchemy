@@ -1,10 +1,16 @@
+import sys
 from logging.config import fileConfig
 
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
 from alembic import context
-from tests.domain import metadata
+
+# hack to keep example code inside the tests folder without polluting the root folder
+# of the repository
+sys.path.append("../")
+
+from domain import metadata
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
