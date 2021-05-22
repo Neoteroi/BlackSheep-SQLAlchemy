@@ -9,8 +9,7 @@ def readme():
 setup(
     name="blacksheep-sqlalchemy",
     version="0.0.1",
-    description="Extension for BlackSheep that simplifies the use of SQLAlchemy "
-    + "in the web framework",
+    description="Extension for BlackSheep to use SQLAlchemy",
     long_description=readme(),
     long_description_content_type="text/markdown",
     classifiers=[

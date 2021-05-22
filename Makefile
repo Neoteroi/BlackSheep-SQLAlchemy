@@ -22,7 +22,7 @@ release: clean artifacts
 
 
 test:
-	flake8 && pytest
+	flake8 blacksheepsqlalchemy && pytest tests/
 
 
 testcov:
