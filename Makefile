@@ -26,4 +26,4 @@ test:
 
 
 testcov:
-	pytest --cov-report html --cov-report annotate --cov=blacksheepsqlalchemy tests/
+	pytest --cov-report html --cov=blacksheepsqlalchemy tests/

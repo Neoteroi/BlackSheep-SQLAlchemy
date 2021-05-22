@@ -51,6 +51,7 @@ jobs:
         run: |
           cd tests
           alembic upgrade head
+          cp example.db ../
 
       - name: Run tests
         run: |

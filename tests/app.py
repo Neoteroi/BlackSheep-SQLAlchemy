@@ -24,11 +24,7 @@ app = Application(show_error_details=True)
 docs = OpenAPIHandler(info=Info(title="Example API", version="0.0.1"))
 docs.bind_app(app)
 
-use_sqlalchemy(
-    app,
-    connection_string="sqlite+aiosqlite:///example.db",
-    echo=True,
-)
+use_sqlalchemy(app, connection_string="sqlite+aiosqlite:///example.db", echo=True)
 
 get = app.router.get
 post = app.router.post
@@ -37,7 +33,7 @@ delete = app.router.delete
 
 @dataclass
 class CreateCountryInput:
-    code: str
+    id: str
     name: str
 
 
@@ -56,7 +52,7 @@ async def create_country_1(db_connection, data: CreateCountryInput) -> Response:
     async with db_connection:
         await db_connection.execute(
             text("INSERT INTO country (id, name) VALUES (:id, :name)"),
-            [{"id": data.code, "name": data.name}],
+            [{"id": data.id, "name": data.name}],
         )
         await db_connection.commit()
     return Response(201)
@@ -113,13 +109,13 @@ async def create_country_2(db_session, data: CreateCountryInput) -> Response:
     Inserts a country using the ORM pattern.
     """
     async with db_session:
-        db_session.add(Country(id=data.code, name=data.name))
+        db_session.add(Country(id=data.id, name=data.name))
         await db_session.commit()
     return Response(201)
 
 
 @docs(tags=["ORM"])
-@delete("/api/orm/countries")
+@delete("/api/orm/countries/{country_id}")
 async def delete_country_2(db_session, country_id: str) -> Response:
     """
     Deletes a country using the ORM pattern.

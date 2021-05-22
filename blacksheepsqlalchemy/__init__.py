@@ -16,6 +16,9 @@ def __configure_services(
     db_connection_alias: str,
     db_session_alias: str,
 ) -> None:
+    # Note: pytest-cov generates false negatives for the following three functions
+    # defined locally; they work and this is verified by tests
+
     async def dispose_engine(_):
         nonlocal engine
         await engine.dispose()
