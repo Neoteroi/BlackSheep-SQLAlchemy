@@ -1,4 +1,3 @@
-from blacksheepsqlalchemy import use_sqlalchemy
 from .fixtures import *  # NoQA
 
 

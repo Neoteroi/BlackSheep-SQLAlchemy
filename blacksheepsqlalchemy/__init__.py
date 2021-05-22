@@ -37,6 +37,10 @@ def __configure_services(
     app.services.add_scoped_by_factory(session_factory)
     app.services.add_alias(db_session_alias, AsyncSession)
 
+    # TODO: configure an exception handler for
+    # sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed,
+    # to return an HTTP Conflict response in such case!
+
 
 def use_sqlalchemy(
     app: Application,
