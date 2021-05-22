@@ -1,6 +1,6 @@
 [![Build](https://github.com/Neoteroi/BlackSheep-SQLAlchemy/actions/workflows/build.yml/badge.svg)](https://github.com/Neoteroi/BlackSheep-SQLAlchemy/actions/workflows/build.yml)
 [![pypi](https://img.shields.io/pypi/v/BlackSheep-SQLAlchemy.svg?color=blue)](https://pypi.org/project/BlackSheep-SQLAlchemy/)
-[![versions](https://img.shields.io/pypi/pyversions/blacksheep-sqlalchemy.svg)](https://github.com/robertoprevato/blacksheep-sqlalchemy)
+[![versions](https://img.shields.io/pypi/pyversions/blacksheep-sqlalchemy.svg)](https://github.com/Neoteroi/BlackSheep-SQLAlchemy/)
 [![license](https://img.shields.io/github/license/Neoteroi/blacksheep-sqlalchemy.svg)](https://github.com/Neoteroi/BlackSheep-SQLAlchemy/blob/main/LICENSE)
 
 # BlackSheep-SQLAlchemy
