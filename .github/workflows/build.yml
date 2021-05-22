@@ -47,6 +47,11 @@ jobs:
         run: |
           pip install -U --no-index --find-links=deps deps/*
 
+      - name: Prepare test database
+        run: |
+          cd tests
+          alembic upgrade head
+
       - name: Run tests
         run: |
           flake8 && pytest --doctest-modules --junitxml=junit/pytest-results-${{ matrix.python-version }}.xml --cov=$PROJECT_NAME --cov-report=xml tests/
