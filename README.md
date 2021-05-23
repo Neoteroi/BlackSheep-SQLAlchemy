@@ -25,7 +25,7 @@ use_sqlalchemy(app, connection_string="<CONNECTION_STRING>")
 
 After registering SQLAlchemy, services are configured in the application, so
 they are automatically resolved in any request handler requiring a SQLAlchemy
-db connections or db sessions; for example:
+db connection or db session; for example:
 
 ```python
 
@@ -64,8 +64,8 @@ For example, using SQLite:
 * requires driver: `pip install aiosqlite`
 * connection string: `sqlite+aiosqlite:///example.db`
 
-See the `tests` folder for a working example using database migrations applied
-with `Alembic`, and a documented API that offers methods to fetch, create,
+See the `tests` folder for a [working example](https://github.com/Neoteroi/BlackSheep-SQLAlchemy/blob/main/tests/app.py) 
+using database migrations applied with `Alembic`, and a documented API that offers methods to fetch, create,
 delete countries objects.
 
 ---
