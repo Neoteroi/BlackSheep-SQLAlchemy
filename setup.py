@@ -8,7 +8,7 @@ def readme():
 
 setup(
     name="blacksheep-sqlalchemy",
-    version="0.0.1",
+    version="0.0.2",
     description="Extension for BlackSheep to use SQLAlchemy",
     long_description=readme(),
     long_description_content_type="text/markdown",
@@ -28,7 +28,7 @@ setup(
     keywords="blacksheep sqlalchemy orm database",
     license="MIT",
     packages=["blacksheepsqlalchemy"],
-    install_requires=["blacksheep", "SQLAlchemy==1.4.15"],
+    install_requires=["blacksheep", "SQLAlchemy"],
     include_package_data=True,
     zip_safe=False,
 )
