@@ -1,12 +1,12 @@
 from typing import Optional
 
+from blacksheep.server import Application
 from sqlalchemy.ext.asyncio import (
-    create_async_engine,
+    AsyncConnection,
     AsyncEngine,
     AsyncSession,
-    AsyncConnection,
+    create_async_engine,
 )
-from blacksheep.server import Application
 
 
 def __configure_services(

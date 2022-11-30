@@ -1,9 +1,11 @@
-from blacksheep.contents import JSONContent
 import pytest
-from .fixtures import *  # NoQA
-from blacksheep.server import Application
 from blacksheep.client import ClientSession
+from blacksheep.contents import JSONContent
+from blacksheep.server import Application
+
 from blacksheepsqlalchemy import use_sqlalchemy
+
+from .fixtures import *  # NoQA
 
 
 async def insert_fetch_delete_scenario(
