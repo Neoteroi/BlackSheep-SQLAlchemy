@@ -32,20 +32,9 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - uses: actions/cache@v1
-        id: depcache
-        with:
-          path: deps
-          key: requirements-pip-${{ matrix.python-version }}-${{ hashFiles('requirements.txt') }}
-
-      - name: Download dependencies
-        if: steps.depcache.outputs.cache-hit != 'true'
-        run: |
-          pip download --dest=deps -r dev-requirements.txt
-
       - name: Install dependencies
         run: |
-          pip install -U --no-index --find-links=deps deps/*
+          pip install -r dev-requirements.txt
 
       - name: Prepare test database
         run: |
