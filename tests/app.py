@@ -12,11 +12,11 @@ import uvicorn
 from blacksheep.messages import Response
 from blacksheep.server import Application
 from blacksheep.server.openapi.v3 import OpenAPIHandler
-from blacksheepsqlalchemy import use_sqlalchemy
 from openapidocs.v3 import Info
 from sqlalchemy import delete as sql_delete
 from sqlalchemy import text
 
+from blacksheepsqlalchemy import use_sqlalchemy
 from tests.domain import Country
 
 app = Application(show_error_details=True)

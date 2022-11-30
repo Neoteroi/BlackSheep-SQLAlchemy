@@ -1,10 +1,8 @@
 import sys
 from logging.config import fileConfig
 
-from sqlalchemy import engine_from_config
-from sqlalchemy import pool
-
 from alembic import context
+from sqlalchemy import engine_from_config, pool
 
 # hack to keep example code inside the tests folder without polluting the root folder
 # of the repository
