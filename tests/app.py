@@ -4,10 +4,6 @@ from typing import List
 
 from sqlalchemy.sql.expression import select
 
-# hack to keep example code inside the tests folder without polluting the root folder
-# of the repository
-sys.path.append("../")
-
 import uvicorn
 from blacksheep.messages import Response
 from blacksheep.server import Application
@@ -18,6 +14,10 @@ from sqlalchemy import text
 
 from blacksheepsqlalchemy import use_sqlalchemy
 from tests.domain import Country
+
+# hack to keep example code inside the tests folder without polluting the root folder
+# of the repository
+sys.path.append("../")
 
 app = Application(show_error_details=True)
 
