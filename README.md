@@ -11,6 +11,10 @@ simplifies the use of SQLAlchemy in the web framework.
 pip install blacksheep-sqlalchemy
 ```
 
+**Important:** this library only supports `rodi` dependency injection
+container. However, the implementation can be used for reference to configure
+other DI containers to work with SQLAlchemy.
+
 ## How to use
 
 ```python
@@ -64,7 +68,7 @@ For example, using SQLite:
 * requires driver: `pip install aiosqlite`
 * connection string: `sqlite+aiosqlite:///example.db`
 
-See the `tests` folder for a [working example](https://github.com/Neoteroi/BlackSheep-SQLAlchemy/blob/main/tests/app.py) 
+See the `tests` folder for a [working example](https://github.com/Neoteroi/BlackSheep-SQLAlchemy/blob/main/tests/app.py)
 using database migrations applied with `Alembic`, and a documented API that offers methods to fetch, create,
 delete countries objects.
 
