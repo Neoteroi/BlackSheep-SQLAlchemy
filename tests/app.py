@@ -1,12 +1,5 @@
-import sys
 from dataclasses import dataclass
 from typing import List
-
-from sqlalchemy.sql.expression import select
-
-# hack to keep example code inside the tests folder without polluting the root folder
-# of the repository
-sys.path.append("../")
 
 import uvicorn
 from blacksheep.messages import Response
@@ -16,6 +9,7 @@ from openapidocs.v3 import Info
 from sqlalchemy import delete as sql_delete
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncConnection, AsyncSession
+from sqlalchemy.sql.expression import select
 
 from blacksheepsqlalchemy import use_sqlalchemy
 from tests.domain import Country
