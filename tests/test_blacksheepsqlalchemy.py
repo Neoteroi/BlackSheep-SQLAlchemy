@@ -1,11 +1,12 @@
-from pathlib import Path
+from typing import Literal
+
 import pytest
 from blacksheep.client import ClientSession
 from blacksheep.contents import JSONContent
 from blacksheep.server import Application
 
 from blacksheepsqlalchemy import use_sqlalchemy
-from typing import Literal
+
 from .fixtures import *  # NoQA
 
 
