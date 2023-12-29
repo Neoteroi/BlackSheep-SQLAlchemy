@@ -22,7 +22,7 @@ classifiers = [
 ]
 keywords = ["blacksheep", "sqlalchemy", "orm", "database"]
 
-dependencies = ["blacksheep", "SQLAlchemy"]
+dependencies = ["blacksheep~=2.0.3", "SQLAlchemy~=2.0.24"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["blacksheepsqlalchemy"]
