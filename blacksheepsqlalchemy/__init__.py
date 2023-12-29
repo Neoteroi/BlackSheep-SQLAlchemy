@@ -1,6 +1,7 @@
 from typing import Optional
 
 from blacksheep.server import Application
+from rodi import Container
 from sqlalchemy.ext.asyncio import (
     AsyncConnection,
     AsyncEngine,
@@ -31,6 +32,9 @@ def __configure_services(
     def session_factory() -> AsyncSession:
         return AsyncSession(engine, expire_on_commit=False)
 
+    assert isinstance(
+        app.services, Container
+    ), "blacksheep-sqlalchemy only supports rodi for dependency injection"
     app.services.add_instance(engine)
     app.services.add_alias(db_engine_alias, AsyncEngine)
 
