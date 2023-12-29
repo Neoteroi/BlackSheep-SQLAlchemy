@@ -1,16 +1,22 @@
+from pathlib import Path
 import pytest
 from blacksheep.client import ClientSession
 from blacksheep.contents import JSONContent
 from blacksheep.server import Application
 
 from blacksheepsqlalchemy import use_sqlalchemy
-
+from typing import Literal
 from .fixtures import *  # NoQA
 
 
 async def insert_fetch_delete_scenario(
-    client_session: ClientSession, option: str, country_code: str, country_name: str
+    client_session: ClientSession,
+    option: Literal["connection", "orm"],
+    country_code: str,
+    country_name: str,
 ):
+    await client_session.delete(f"/api/{option}/countries/{country_code}")
+
     response = await client_session.post(
         "/api/connection/countries",
         JSONContent({"id": country_code, "name": country_name}),

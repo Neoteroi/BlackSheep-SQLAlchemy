@@ -36,3 +36,6 @@ only-packages = true
 [project.urls]
 "Homepage" = "https://github.com/Neoteroi/BlackSheep-SQLAlchemy"
 "Bug Tracker" = "https://github.com/Neoteroi/BlackSheep-SQLAlchemy/issues"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"

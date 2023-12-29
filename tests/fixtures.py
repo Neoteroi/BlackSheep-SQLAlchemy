@@ -5,32 +5,25 @@ from time import sleep
 import pytest
 import uvicorn
 from blacksheep.client import ClientSession
-from blacksheep.client.pool import ClientConnectionPools
+from blacksheep.client.pool import ConnectionPools
 
 from tests.utils import get_sleep_time
 
 from .app import app
 
 
-@pytest.fixture(scope="session")
-def event_loop():
-    """Create an instance of the default event loop for all test cases."""
-    loop = asyncio.get_event_loop_policy().new_event_loop()
-    yield loop
-    loop.close()
-
-
-@pytest.fixture(scope="module")
-def client_session(server_host, server_port, event_loop):
-    # It is important to pass the instance of ClientConnectionPools,
+@pytest.fixture()
+async def client_session(server_host, server_port):
+    # It is important to pass the instance of ConnectionPools,
     # to ensure that the connections are reused and closed
+    event_loop = asyncio.get_running_loop()
     session = ClientSession(
         loop=event_loop,
         base_url=f"http://{server_host}:{server_port}",
-        pools=ClientConnectionPools(event_loop),
+        pools=ConnectionPools(event_loop),
     )
     yield session
-    asyncio.run(session.close())
+    await session.close()
 
 
 @pytest.fixture(scope="module")

@@ -15,7 +15,7 @@ from blacksheep.server.openapi.v3 import OpenAPIHandler
 from openapidocs.v3 import Info
 from sqlalchemy import delete as sql_delete
 from sqlalchemy import text
-
+from sqlalchemy.ext.asyncio import AsyncConnection, AsyncSession
 from blacksheepsqlalchemy import use_sqlalchemy
 from tests.domain import Country
 
@@ -45,7 +45,9 @@ class CountryData:
 
 @docs(tags=["db-connection"])
 @post("/api/connection/countries")
-async def create_country_1(db_connection, data: CreateCountryInput) -> Response:
+async def create_country_1(
+    db_connection: AsyncConnection, data: CreateCountryInput
+) -> Response:
     """
     Inserts a country using a database connection.
     """
@@ -60,7 +62,7 @@ async def create_country_1(db_connection, data: CreateCountryInput) -> Response:
 
 @docs(tags=["db-connection"])
 @delete("/api/connection/countries/{country_id}")
-async def delete_country_1(db_connection, country_id: str) -> Response:
+async def delete_country_1(db_connection: AsyncConnection, country_id: str) -> Response:
     """
     Deletes a country by id using a database connection.
     """
@@ -75,21 +77,21 @@ async def delete_country_1(db_connection, country_id: str) -> Response:
 
 @docs(tags=["db-connection"])
 @get("/api/connection/countries")
-async def get_countries_1(db_connection) -> List[CountryData]:
+async def get_countries_1(db_connection: AsyncConnection) -> List[CountryData]:
     """
     Fetches the countries using a database connection.
     """
     result = []
     async with db_connection:
-        items = await db_connection.execute(text("SELECT * FROM country"))
+        items = await db_connection.execute(text("SELECT id, name FROM country"))
         for item in items.fetchall():
-            result.append(CountryData(item["id"], item["name"]))
+            result.append(CountryData(item[0], item[1]))
     return result
 
 
 @docs(tags=["ORM"])
 @get("/api/orm/countries")
-async def get_countries_2(db_session) -> List[CountryData]:
+async def get_countries_2(db_session: AsyncSession) -> List[CountryData]:
     """
     Fetches the countries using the ORM pattern.
     """
@@ -104,7 +106,9 @@ async def get_countries_2(db_session) -> List[CountryData]:
 
 @docs(tags=["ORM"])
 @post("/api/orm/countries")
-async def create_country_2(db_session, data: CreateCountryInput) -> Response:
+async def create_country_2(
+    db_session: AsyncSession, data: CreateCountryInput
+) -> Response:
     """
     Inserts a country using the ORM pattern.
     """
@@ -116,7 +120,7 @@ async def create_country_2(db_session, data: CreateCountryInput) -> Response:
 
 @docs(tags=["ORM"])
 @delete("/api/orm/countries/{country_id}")
-async def delete_country_2(db_session, country_id: str) -> Response:
+async def delete_country_2(db_session: AsyncSession, country_id: str) -> Response:
     """
     Deletes a country using the ORM pattern.
     """
