@@ -7,3 +7,4 @@ black
 isort
 uvicorn
 aiosqlite
+alembic
